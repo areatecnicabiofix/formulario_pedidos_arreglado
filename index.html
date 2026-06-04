@@ -751,6 +751,28 @@ let stack = ["step-choice"];
 let clientData = {};
 let catalogStack = [];
 
+// URL del Apps Script que guarda los clientes nuevos en la planilla
+const URL_CLIENTES = 'PEGA_ACA_LA_URL_DEL_SCRIPT_DE_CLIENTES';
+
+// Envío por JSONP (igual técnica que el sistema de stock)
+function jsonpClientes(params, cb) {
+  const cbName = 'cli_' + Date.now() + '_' + Math.floor(Math.random() * 1000);
+  const s = document.createElement('script');
+  window[cbName] = function (d) { delete window[cbName]; document.body.removeChild(s); if (cb) cb(d); };
+  let qs = '?callback=' + cbName;
+  Object.keys(params).forEach(k => qs += '&' + k + '=' + encodeURIComponent(params[k]));
+  s.src = URL_CLIENTES + qs;
+  document.body.appendChild(s);
+}
+
+// Separa "Juan Carlos Pérez" -> nombre: "Juan", apellido: "Carlos Pérez"
+function separarNombre(completo) {
+  const partes = (completo || '').trim().split(/\s+/);
+  if (partes.length === 0 || partes[0] === '') return { nombre: '', apellido: '' };
+  if (partes.length === 1) return { nombre: partes[0], apellido: '' };
+  return { nombre: partes[0], apellido: partes.slice(1).join(' ') };
+}
+
 // ========== UI BÁSICA ==========
 function showSection(id, push = true) {
   document.querySelectorAll("section").forEach(s => s.classList.add("hidden"));
@@ -801,6 +823,27 @@ function validateStart(type) {
     clientData.loc = document.getElementById("new_loc").value;
     clientData.prov = document.getElementById("new_prov").value;
     clientData.cp = document.getElementById("new_cp").value;
+
+    // Separamos nombre y apellido automáticamente
+    const np = separarNombre(n);
+    clientData.nombreSolo = np.nombre;
+    clientData.apellidoSolo = np.apellido;
+
+    // Guardamos el cliente nuevo en la planilla (en segundo plano)
+    jsonpClientes({
+      accion: 'registrarCliente',
+      nombre: np.nombre,
+      apellido: np.apellido,
+      cuil: d,
+      matricula: clientData.matricula,
+      localidad: clientData.loc,
+      cp: clientData.cp,
+      provincia: clientData.prov
+    }, function (resp) {
+      if (!resp || !resp.ok) {
+        console.error('No se pudo guardar el cliente:', resp ? resp.error : 'sin respuesta');
+      }
+    });
   }
 
   showSection("step-menu");
