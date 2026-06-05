@@ -15,27 +15,11 @@
   .glass { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
   .card-shadow { box-shadow: 0 4px 25px -5px rgba(0,0,0,0.05); }
   .hidden { display: none; }
-
-.input-premium {
-  width: 100%;
-  box-sizing: border-box;
-}
-
-select.input-premium {
-  width: 100%;
-  box-sizing: border-box;
-  max-width: 100%;
-}
-
-/* 🔧 asegura que NADA se salga de los contenedores */
-* {
-  box-sizing: border-box;
-}
-  /* ✅ Esto es lo NUEVO (anti-zoom por toques rápidos) */
-  button { touch-action: manipulation; }
-
-  /* ✅ Esto es lo NUEVO (anti-zoom al enfocar inputs en iPhone) */
-  input, textarea, select { font-size: 16px; }
+.input-premium { width: 100%; box-sizing: border-box; }
+select.input-premium { width: 100%; box-sizing: border-box; max-width: 100%; }
+* { box-sizing: border-box; }
+button { touch-action: manipulation; }
+input, textarea, select { font-size: 16px; }
 </style>
 </head>
 <body class="min-h-screen pb-10">
@@ -44,17 +28,11 @@ select.input-premium {
         
         <header class="bg-slate-900 text-white p-10 pt-14 rounded-b-[50px] shadow-2xl text-center relative overflow-hidden">
             <div class="flex flex-col items-center gap-3 relative">
-  <img
-    src="logo biofix blanco.png"
-    alt="Bio-Fix"
-    class="h-14 object-contain"
-  />
-
+  <img src="logo biofix blanco.png" alt="Bio-Fix" class="h-14 object-contain" />
   <p class="text-[11px] text-slate-300 font-black uppercase tracking-[0.35em] flex items-center gap-2">
     <span>Formulario de pedidos</span>
     <span class="text-blue-400 text-sm">📝</span>
   </p>
-                
 </div>
         </header>
 
@@ -156,22 +134,18 @@ select.input-premium {
   <span class="text-xs text-cyan-500 font-black">SISTEMA</span>
   <span class="text-lg">MP</span>
 </button>
-
 <button onclick="loadProducts('basales')" class="btn-choice bg-white !py-10">
   <span class="text-xs text-slate-500 font-black">SISTEMA</span>
   <span class="text-lg">BASAL</span>
 </button>
-
 <button onclick="loadProducts('compresivos')" class="btn-choice bg-white !py-10">
   <span class="text-xs text-fuchsia-500 font-black">SISTEMA</span>
   <span class="text-lg">CMU</span>
 </button>
-
 <button onclick="loadProducts('hi')" class="btn-choice bg-white !py-10">
   <span class="text-xs text-red-500 font-black">SISTEMA</span>
   <span class="text-lg">HI</span>
 </button>
-
 <button onclick="loadProducts('multiunit')" class="btn-choice bg-white border-amber-200 !py-10 col-span-2 flex flex-col items-center justify-center">
   <span class="text-xs text-amber-600 font-black tracking-widest">SISTEMA</span>
   <div class="flex items-baseline gap-2">
@@ -183,41 +157,33 @@ select.input-premium {
             </section>
 
             <section id="sub-analogicos" class="hidden grid grid-cols-2 gap-4">
-
   <button onclick="loadProducts(DB.analogicos.mp)" class="btn-choice bg-white !py-10">
     <span class="text-xs text-cyan-500 font-black">SISTEMA</span>
     <span class="text-lg">MP</span>
   </button>
-
   <button onclick="loadProducts(DB.analogicos.cmu)" class="btn-choice bg-white !py-10">
     <span class="text-xs text-fuchsia-500 font-black">SISTEMA</span>
     <span class="text-lg">CMU</span>
   </button>
-
   <button onclick="loadProducts(DB.analogicos.hi)" class="btn-choice bg-white !py-10">
     <span class="text-xs text-red-500 font-black">SISTEMA</span>
     <span class="text-lg">HI</span>
   </button>
-
   <button onclick="loadProducts(DB.analogicos.mu)" class="btn-choice bg-white !py-10">
     <span class="text-xs text-amber-600 font-black">SISTEMA</span>
     <span class="text-lg">MU</span>
   </button>
-
 </section>
 
             <section id="sub-digital" class="hidden grid grid-cols-2 gap-4">
-
   <button onclick="loadProducts(DB.digital.cmu)" class="btn-choice bg-white !py-10">
     <span class="text-xs text-fuchsia-500 font-black">SISTEMA</span>
     <span class="text-lg">CMU</span>
   </button>
-
   <button onclick="loadProducts(DB.digital.hi)" class="btn-choice bg-white !py-10">
     <span class="text-xs text-red-500 font-black">SISTEMA</span>
     <span class="text-lg">HI</span>
   </button>
-                
   <button onclick="loadProducts(DB.digital.mu)" class="btn-choice bg-white !py-10 col-span-2">
     <span class="text-xs text-amber-600 font-black">SISTEMA</span>
     <span class="text-lg">MU</span>
@@ -233,36 +199,25 @@ select.input-premium {
             <section id="step-lista" class="hidden"></section>
 
             <section id="step-resumen" class="hidden space-y-5">
-
     <div id="cart-items" class="space-y-4"></div>
-
     <textarea id="obs"
       class="w-full p-6 bg-white rounded-[32px] border border-slate-100 card-shadow font-bold text-sm outline-none"
       placeholder="Notas..."></textarea>
-
     <div class="bg-amber-50 border border-amber-200 rounded-[28px] p-6 card-shadow flex gap-4 items-start">
-
         <div class="text-2xl">⚠️</div>
-
         <div>
-            <p class="text-xs font-black uppercase tracking-wide text-amber-800">
-                Confirmación de stock
-            </p>
+            <p class="text-xs font-black uppercase tracking-wide text-amber-800">Confirmación de stock</p>
             <p class="text-sm font-bold text-slate-700 mt-2 leading-snug">
                 La disponibilidad de los productos y el presupuesto final
                 quedan sujetos a verificación de stock.
                 El presupuesto formal será enviado luego de la confirmación.
             </p>
         </div>
-
     </div>
-
-    <!-- 🔹 BOTÓN AQUÍ 🔹 -->
     <button onclick="sendWA()" 
       class="w-full bg-green-600 text-white py-7 rounded-[32px] font-black uppercase shadow-xl flex items-center justify-center gap-3 mt-4">
       <span>Enviar Pedido por WhatsApp</span>
     </button>
-
 </section>
 
     <script>
@@ -334,54 +289,22 @@ const DB = {
     },
     analogicos: {
   mp: {
-    "UCLAs": [
-      "UCLA rotacional para Implantes MonoPieza"
-    ],
-    "Análogos": [
-      "Analogo Plastico Rotacional de implante Monopieza"
-    ],
-    "Transfers": [
-      "Transfer plastico rotacional para implantes Monopieza"
-    ]
+    "UCLAs": ["UCLA rotacional para Implantes MonoPieza"],
+    "Análogos": ["Analogo Plastico Rotacional de implante Monopieza"],
+    "Transfers": ["Transfer plastico rotacional para implantes Monopieza"]
   },
-
   cmu: {
-    "Cicatrizales": [
-      "Cicatrizal Altura de 2mm - Compresivo Multi Unit",
-      "Cicatrizal Altura de 3mm - Compresivo Multi Unit",
-      "Cicatrizal Altura de 4mm - Compresivo Multi Unit"
-    ],
-    "Ball Attach": [
-      "Ball Attach Altura (h)2mm - Compresivo Multi Unit",
-      "Ball Attach Altura (h)3mm - Compresivo Multi Unit"
-    ],
+    "Cicatrizales": ["Cicatrizal Altura de 2mm - Compresivo Multi Unit","Cicatrizal Altura de 3mm - Compresivo Multi Unit","Cicatrizal Altura de 4mm - Compresivo Multi Unit"],
+    "Ball Attach": ["Ball Attach Altura (h)2mm - Compresivo Multi Unit","Ball Attach Altura (h)3mm - Compresivo Multi Unit"],
     "Pilar recto": "Pilar Recto Hombro 1 - Compresivo Multi Unit",
     "Tornillo M2": "Tornillo M2 para implante Compresivo Multi Unit"
   },
-
   hi: {
-    "Cicatrizales": [
-      "Cicatrizal Altura 1mm -Hexágono Interno",
-      "Cicatrizal Altura 2mm -Hexágono Interno",
-      "Cicatrizal Altura 3mm -Hexágono Interno",
-      "Cicatrizal Altura 4mm -Hexágono Interno"
-    ],
-    "Ball Attach": [
-      "Ball attach y cazoleta con O'ring Altura 1 - Hexágono Interno",
-      "Ball attach y cazoleta con O'ring Altura 2 - Hexágono Interno",
-      "Ball attach y cazoleta con O'ring Altura 3 - Hexágono Interno",
-      "Ball attach y cazoleta con O'ring Altura 4 - Hexágono Interno"
-    ],
+    "Cicatrizales": ["Cicatrizal Altura 1mm -Hexágono Interno","Cicatrizal Altura 2mm -Hexágono Interno","Cicatrizal Altura 3mm -Hexágono Interno","Cicatrizal Altura 4mm -Hexágono Interno"],
+    "Ball Attach": ["Ball attach y cazoleta con O'ring Altura 1 - Hexágono Interno","Ball attach y cazoleta con O'ring Altura 2 - Hexágono Interno","Ball attach y cazoleta con O'ring Altura 3 - Hexágono Interno","Ball attach y cazoleta con O'ring Altura 4 - Hexágono Interno"],
     "Pilares": {
-      "Rectos": [
-        "Pilar recto y tornillo M1.8 Altura 1 - Hexágono Interno",
-        "Pilar recto y tornillo M1.8 Altura 2 - Hexágono Interno",
-        "Pilar recto y tornillo M1.8 Altura 3 - Hexágono Interno"
-      ],
-      "Angulados": [
-        "Pilar angulado 15°-Hexágono Interno",
-        "Pilar angulado 25°-Hexágono Interno"
-      ]
+      "Rectos": ["Pilar recto y tornillo M1.8 Altura 1 - Hexágono Interno","Pilar recto y tornillo M1.8 Altura 2 - Hexágono Interno","Pilar recto y tornillo M1.8 Altura 3 - Hexágono Interno"],
+      "Angulados": ["Pilar angulado 15°-Hexágono Interno","Pilar angulado 25°-Hexágono Interno"]
     },
     "Transfers": {
       "Cubeta abierta": "Transfer cubeta abierta y tornillo - Hexágono Interno",
@@ -396,372 +319,139 @@ const DB = {
       "Fijación hexagonal": "Tornillo de fijación hexoganal M1,8"
     }
   },
-
   he: {
-  "UCLAs": {
-    "Rotacionales": [
-      "Ucla calcinable rotacional - HE Plataforma Ø3.4",
-      "Ucla calcinable rotacional - HE Plataforma Ø4.1",
-      "Ucla calcinable rotacional - HE Plataforma Ø5.0"
-    ],
-    "Anti-rotacionales": [
-      "Ucla calcinable Anti-rotacional - HE Plataforma Ø3.4",
-      "Ucla calcinable Anti-rotacional - HE Plataforma Ø4.1",
-      "Ucla calcinable Anti-rotacional - HE Plataforma Ø5.0"
-    ]
-  },
-
-  "Análogos": [
-    "Análogo - HE Plataforma Ø3.4",
-    "Análogo - HE Plataforma Ø4.1",
-    "Análogo - HE Plataforma Ø5.0"
-  ],
-
-  "Transfers": {
-    "Cubeta cerrada": [
-      "Transfer cubeta cerrada - HE Plataforma Ø3.4",
-      "Transfer cubeta cerrada - HE Plataforma Ø4.1",
-      "Transfer cubeta cerrada - HE Plataforma Ø5.0"
-    ],
-    "Cubeta abierta": [
-      "Transfer cubeta abierta - HE Plataforma Ø3.4",
-      "Transfer cubeta abierta - HE Plataforma Ø4.1",
-      "Transfer cubeta abierta - HE Plataforma Ø5.0"
-    ]
-  },
-
-  "Ball Attach": {
-    "Plataforma Ø3.4": [
-      "Ball attach Altura 1 - HE Plataforma Ø3.4",
-      "Ball attach Altura 2 - HE Plataforma Ø3.4",
-      "Ball attach Altura 3 - HE Plataforma Ø3.4",
-      "Ball attach Altura 4 - HE Plataforma Ø3.4"
-    ],
-    "Plataforma Ø4.1": [
-      "Ball attach Altura 1 - HE Plataforma Ø4.1",
-      "Ball attach Altura 2 - HE Plataforma Ø4.1",
-      "Ball attach Altura 3 - HE Plataforma Ø4.1",
-      "Ball attach Altura 4 - HE Plataforma Ø4.1"
-    ],
-    "Plataforma Ø5.0": [
-      "Ball attach Altura 1 - HE Plataforma Ø5.0",
-      "Ball attach Altura 2 - HE Plataforma Ø5.0",
-      "Ball attach Altura 3 - HE Plataforma Ø5.0",
-      "Ball attach Altura 4 - HE Plataforma Ø5.0"
-    ]
-  },
-
-  "Cicatrizales": {
-    "Plataforma Ø3.4": [
-      "Cicatrizal Altura 1 - HE Plataforma Ø3.4",
-      "Cicatrizal Altura 2 - HE Plataforma Ø3.4",
-      "Cicatrizal Altura 3 - HE Plataforma Ø3.4"
-    ],
-    "Plataforma Ø4.1": [
-      "Cicatrizal Altura 1 - HE Plataforma Ø4.1",
-      "Cicatrizal Altura 2 - HE Plataforma Ø4.1",
-      "Cicatrizal Altura 3 - HE Plataforma Ø4.1"
-    ],
-    "Plataforma Ø5.0": [
-      "Cicatrizal Altura 1 - HE Plataforma Ø5.0",
-      "Cicatrizal Altura 2 - HE Plataforma Ø5.0",
-      "Cicatrizal Altura 3 - HE Plataforma Ø5.0"
-    ]
-  },
-
-  "Pilares": {
-    "Rectos": {
-      "Plataforma Ø3.4": [
-        "Pilar recto Altura 1 - HE Plataforma Ø3.4",
-        "Pilar recto Altura 2 - HE Plataforma Ø3.4",
-        "Pilar recto Altura 3 - HE Plataforma Ø3.4"
-      ],
-      "Plataforma Ø4.1": [
-        "Pilar recto Altura 1 - HE Plataforma Ø4.1",
-        "Pilar recto Altura 2 - HE Plataforma Ø4.1",
-        "Pilar recto Altura 3 - HE Plataforma Ø4.1"
-      ],
-      "Plataforma Ø5.0": [
-        "Pilar recto Altura 1 - HE Plataforma Ø5.0",
-        "Pilar recto Altura 2 - HE Plataforma Ø5.0",
-        "Pilar recto Altura 3 - HE Plataforma Ø5.0"
-      ]
+    "UCLAs": {
+      "Rotacionales": ["Ucla calcinable rotacional - HE Plataforma Ø3.4","Ucla calcinable rotacional - HE Plataforma Ø4.1","Ucla calcinable rotacional - HE Plataforma Ø5.0"],
+      "Anti-rotacionales": ["Ucla calcinable Anti-rotacional - HE Plataforma Ø3.4","Ucla calcinable Anti-rotacional - HE Plataforma Ø4.1","Ucla calcinable Anti-rotacional - HE Plataforma Ø5.0"]
     },
-    "Angulados": [
-      "Pilar angulado 15° - HE Plataforma Ø4.1",
-      "Pilar angulado 25° - HE Plataforma Ø4.1"
-    ]
-  },
-
-  "Tornillos": [
-    "Tornillo cuadrado M2x0.4 - Hexágono Externo",
-    "Tornillo hexagonal M2x0.4 - Hexágono Externo"
-  ]
-},
-    cmhi: {
-  "Análogos": [
-    "Análogo de Implante Universal CMHI"
-  ],
-
-  "Análogos de Pilar": {
-    "Ø3.3": [
-      "Análogo de pilar estándar 3.3x4",
-      "Análogo de pilar estándar 3.3x6"
-    ],
-    "Ø4.5": [
-      "Análogo de pilar estándar 4.5x4",
-      "Análogo de pilar estándar 4.5x6"
-    ]
-  },
-
-  "Pilares Estándar": {
-    "Ø3.3": [
-      "Pilar estándar 3.3 x 2.5 x 4",
-      "Pilar estándar 3.3 x 3.5 x 4",
-      "Pilar estándar 3.3 x 2.5 x 6"
-    ],
-    "Ø4.5": [
-      "Pilar estándar 4.5 x 2.5 x 4",
-      "Pilar estándar 4.5 x 2.5 x 6"
-    ]
-  },
-
-  "Pilares c/tornillo pasante": {
-    "Ø3.3": [
-      "Pilar c/tornillo pasante 3.3 x 1.5 x 4",
-      "Pilar c/tornillo pasante 3.3 x 2.5 x 4",
-      "Pilar c/tornillo pasante 3.3 x 3.5 x 4",
-      "Pilar c/tornillo pasante 3.3 x 1.5 x 6",
-      "Pilar c/tornillo pasante 3.3 x 2.5 x 6"
-    ],
-    "Ø4.5": [
-      "Pilar c/tornillo pasante 4.5 x 1.5 x 4",
-      "Pilar c/tornillo pasante 4.5 x 2.5 x 4",
-      "Pilar c/tornillo pasante 4.5 x 3.5 x 4",
-      "Pilar c/tornillo pasante 4.5 x 1.5 x 6",
-      "Pilar c/tornillo pasante 4.5 x 2.5 x 6",
-      "Pilar c/tornillo pasante 4.5 x 3.5 x 6"
-    ]
-  },
-
-  "Cicatrizales": {
-    "Ø3.3": [
-      "Pilar de cicatrización CM 3.3 x 1.5",
-      "Pilar de cicatrización CM 3.3 x 2.5",
-      "Pilar de cicatrización CM 3.3 x 3.5"
-    ],
-    "Ø4.5": [
-      "Pilar de cicatrización CM 4.5 x 1.5",
-      "Pilar de cicatrización CM 4.5 x 2.5",
-      "Pilar de cicatrización CM 4.5 x 3.5"
-    ]
-  },
-
-  "Ball Attach": [
-    "Ball attach c/cazoleta y o’ring CM - Altura 1.5",
-    "Ball attach c/cazoleta y o’ring CM - Altura 2.5",
-    "Ball attach c/cazoleta y o’ring CM - Altura 3.5"
-  ],
-
-  "Transfers": [
-    "Transfer cubeta abierta CM"
-  ]
- },       
-
-   mu: {
-    "Pilares": {
-      "Rotacional": [
-        "Pilar para Minipilar Rotacional y microtornillo"
-      ],
-      "Anti-rotacional": [
-        "Pilar para Minipilar Anti-rotacional y microtornillo"
-      ]
-    },
-    "UCLAs": [
-      "Ucla calcinable para Minipilar rotacional"
-    ],
-    "Cicatrizales": [
-      "Cicatrizal para Minipilar"
-    ],
+    "Análogos": ["Análogo - HE Plataforma Ø3.4","Análogo - HE Plataforma Ø4.1","Análogo - HE Plataforma Ø5.0"],
     "Transfers": {
-      "Cubeta Abierta": [
-        "Transfer para minipilar Cubeta Abierta"
-      ],
-      "Cubeta Cerrada": [
-        "Transfer para minipilar Cubeta Cerrada"
-      ]
+      "Cubeta cerrada": ["Transfer cubeta cerrada - HE Plataforma Ø3.4","Transfer cubeta cerrada - HE Plataforma Ø4.1","Transfer cubeta cerrada - HE Plataforma Ø5.0"],
+      "Cubeta abierta": ["Transfer cubeta abierta - HE Plataforma Ø3.4","Transfer cubeta abierta - HE Plataforma Ø4.1","Transfer cubeta abierta - HE Plataforma Ø5.0"]
     },
-    "Tornillos": [
-      "Micro tornillo"
-    ]
+    "Ball Attach": {
+      "Plataforma Ø3.4": ["Ball attach Altura 1 - HE Plataforma Ø3.4","Ball attach Altura 2 - HE Plataforma Ø3.4","Ball attach Altura 3 - HE Plataforma Ø3.4","Ball attach Altura 4 - HE Plataforma Ø3.4"],
+      "Plataforma Ø4.1": ["Ball attach Altura 1 - HE Plataforma Ø4.1","Ball attach Altura 2 - HE Plataforma Ø4.1","Ball attach Altura 3 - HE Plataforma Ø4.1","Ball attach Altura 4 - HE Plataforma Ø4.1"],
+      "Plataforma Ø5.0": ["Ball attach Altura 1 - HE Plataforma Ø5.0","Ball attach Altura 2 - HE Plataforma Ø5.0","Ball attach Altura 3 - HE Plataforma Ø5.0","Ball attach Altura 4 - HE Plataforma Ø5.0"]
+    },
+    "Cicatrizales": {
+      "Plataforma Ø3.4": ["Cicatrizal Altura 1 - HE Plataforma Ø3.4","Cicatrizal Altura 2 - HE Plataforma Ø3.4","Cicatrizal Altura 3 - HE Plataforma Ø3.4"],
+      "Plataforma Ø4.1": ["Cicatrizal Altura 1 - HE Plataforma Ø4.1","Cicatrizal Altura 2 - HE Plataforma Ø4.1","Cicatrizal Altura 3 - HE Plataforma Ø4.1"],
+      "Plataforma Ø5.0": ["Cicatrizal Altura 1 - HE Plataforma Ø5.0","Cicatrizal Altura 2 - HE Plataforma Ø5.0","Cicatrizal Altura 3 - HE Plataforma Ø5.0"]
+    },
+    "Pilares": {
+      "Rectos": {
+        "Plataforma Ø3.4": ["Pilar recto Altura 1 - HE Plataforma Ø3.4","Pilar recto Altura 2 - HE Plataforma Ø3.4","Pilar recto Altura 3 - HE Plataforma Ø3.4"],
+        "Plataforma Ø4.1": ["Pilar recto Altura 1 - HE Plataforma Ø4.1","Pilar recto Altura 2 - HE Plataforma Ø4.1","Pilar recto Altura 3 - HE Plataforma Ø4.1"],
+        "Plataforma Ø5.0": ["Pilar recto Altura 1 - HE Plataforma Ø5.0","Pilar recto Altura 2 - HE Plataforma Ø5.0","Pilar recto Altura 3 - HE Plataforma Ø5.0"]
+      },
+      "Angulados": ["Pilar angulado 15° - HE Plataforma Ø4.1","Pilar angulado 25° - HE Plataforma Ø4.1"]
+    },
+    "Tornillos": ["Tornillo cuadrado M2x0.4 - Hexágono Externo","Tornillo hexagonal M2x0.4 - Hexágono Externo"]
+  },
+  cmhi: {
+    "Análogos": ["Análogo de Implante Universal CMHI"],
+    "Análogos de Pilar": {
+      "Ø3.3": ["Análogo de pilar estándar 3.3x4","Análogo de pilar estándar 3.3x6"],
+      "Ø4.5": ["Análogo de pilar estándar 4.5x4","Análogo de pilar estándar 4.5x6"]
+    },
+    "Pilares Estándar": {
+      "Ø3.3": ["Pilar estándar 3.3 x 2.5 x 4","Pilar estándar 3.3 x 3.5 x 4","Pilar estándar 3.3 x 2.5 x 6"],
+      "Ø4.5": ["Pilar estándar 4.5 x 2.5 x 4","Pilar estándar 4.5 x 2.5 x 6"]
+    },
+    "Pilares c/tornillo pasante": {
+      "Ø3.3": ["Pilar c/tornillo pasante 3.3 x 1.5 x 4","Pilar c/tornillo pasante 3.3 x 2.5 x 4","Pilar c/tornillo pasante 3.3 x 3.5 x 4","Pilar c/tornillo pasante 3.3 x 1.5 x 6","Pilar c/tornillo pasante 3.3 x 2.5 x 6"],
+      "Ø4.5": ["Pilar c/tornillo pasante 4.5 x 1.5 x 4","Pilar c/tornillo pasante 4.5 x 2.5 x 4","Pilar c/tornillo pasante 4.5 x 3.5 x 4","Pilar c/tornillo pasante 4.5 x 1.5 x 6","Pilar c/tornillo pasante 4.5 x 2.5 x 6","Pilar c/tornillo pasante 4.5 x 3.5 x 6"]
+    },
+    "Cicatrizales": {
+      "Ø3.3": ["Pilar de cicatrización CM 3.3 x 1.5","Pilar de cicatrización CM 3.3 x 2.5","Pilar de cicatrización CM 3.3 x 3.5"],
+      "Ø4.5": ["Pilar de cicatrización CM 4.5 x 1.5","Pilar de cicatrización CM 4.5 x 2.5","Pilar de cicatrización CM 4.5 x 3.5"]
+    },
+    "Ball Attach": ["Ball attach c/cazoleta y o'ring CM - Altura 1.5","Ball attach c/cazoleta y o'ring CM - Altura 2.5","Ball attach c/cazoleta y o'ring CM - Altura 3.5"],
+    "Transfers": ["Transfer cubeta abierta CM"]
+  },
+  mu: {
+    "Pilares": {
+      "Rotacional": ["Pilar para Minipilar Rotacional y microtornillo"],
+      "Anti-rotacional": ["Pilar para Minipilar Anti-rotacional y microtornillo"]
+    },
+    "UCLAs": ["Ucla calcinable para Minipilar rotacional"],
+    "Cicatrizales": ["Cicatrizal para Minipilar"],
+    "Transfers": {
+      "Cubeta Abierta": ["Transfer para minipilar Cubeta Abierta"],
+      "Cubeta Cerrada": ["Transfer para minipilar Cubeta Cerrada"]
+    },
+    "Tornillos": ["Micro tornillo"]
   }
-
-},      
+},
 digital: {
-
   hi: {
     "Ti Bases": {
-      "Rotacional": [
-        "Ti Base Rotacional y tornillo M1.8 - Hexágono Interno"
-      ],
-      "Anti-Rotacional": [
-        "Ti Base Anti-Rotacional y tornillo M1.8  - Hexágono Interno"
-      ]
+      "Rotacional": ["Ti Base Rotacional y tornillo M1.8 - Hexágono Interno"],
+      "Anti-Rotacional": ["Ti Base Anti-Rotacional y tornillo M1.8  - Hexágono Interno"]
     },
-    "Análogo digital": [
-      "Análogo digital - Hexágono Interno"
-    ],
-    "Cuerpo de escaneo": [
-      "Cuerpo de escaneo y tornillo M1.8 - Hexágono Interno"
-    ]
+    "Análogo digital": ["Análogo digital - Hexágono Interno"],
+    "Cuerpo de escaneo": ["Cuerpo de escaneo y tornillo M1.8 - Hexágono Interno"]
   },
-
   cmu: {
-    "Cuerpo de escaneo": [
-      "Cuerpo de escaneo y tornillo M2 P/Implante Compresivo Multi Unit"
-    ],
-    "Ti Base": [
-      "Ti Base y tornillo M2 - Compresivo Multi Unit"
-    ]
+    "Cuerpo de escaneo": ["Cuerpo de escaneo y tornillo M2 P/Implante Compresivo Multi Unit"],
+    "Ti Base": ["Ti Base y tornillo M2 - Compresivo Multi Unit"]
   },
-
   mu: {
-    "MU": [
-      "Analogo Digital - MU",
-      "Ti-Base y microtornillo - MU",
-      "Cuerpo de Escaneo - MU"
-    ]
+    "MU": ["Analogo Digital - MU","Ti-Base y microtornillo - MU","Cuerpo de Escaneo - MU"]
   }
-
 },
 herramental: {
-
   "Fresas": {
-    "Convencionales": [
-      "Fresa Lanza Corta Ø2,0",
-      "Fresa Lanza Larga Ø2,0"
-    ],
-    "Guiadas": [
-      "Fresa Lanza Guiada Corta Ø2,0",
-      "Fresa Lanza Guiada Larga Ø2,0"
-    ],
-    "Helicoidales": [
-      "Fresa Helicoidal Ø5,3",
-      "Fresa Helicoidal Ø5,0",
-      "Fresa Helicoidal Ø4,6",
-      "Fresa Helicoidal Ø4,3",
-      "Fresa Helicoidal Ø4,0",
-      "Fresa Helicoidal Ø3,6",
-      "Fresa Helicoidal Ø3,2",
-      "Fresa Helicoidal Ø2,8",
-      "Fresa Helicoidal Ø2,5",
-      "Fresa Helicoidal Ø2,0"
-    ]
+    "Convencionales": ["Fresa Lanza Corta Ø2,0","Fresa Lanza Larga Ø2,0"],
+    "Guiadas": ["Fresa Lanza Guiada Corta Ø2,0","Fresa Lanza Guiada Larga Ø2,0"],
+    "Helicoidales": ["Fresa Helicoidal Ø5,3","Fresa Helicoidal Ø5,0","Fresa Helicoidal Ø4,6","Fresa Helicoidal Ø4,3","Fresa Helicoidal Ø4,0","Fresa Helicoidal Ø3,6","Fresa Helicoidal Ø3,2","Fresa Helicoidal Ø2,8","Fresa Helicoidal Ø2,5","Fresa Helicoidal Ø2,0"]
   },
-
   "Kit´s Expansores": {
-    "General": [
-      "Kit 3 Expansores de Hueso",
-      "Kit 3 Expansores de Hueso Sistema Monopieza"
-    ]
+    "General": ["Kit 3 Expansores de Hueso","Kit 3 Expansores de Hueso Sistema Monopieza"]
   },
-
-  "Instrumental colocación": [
-    "Torquímetro Dinamométrico",
-    "Mango Rígido (punta 4x4) para expansor óseo",
-    "Extractor de raíz residual",
-    "Mango para angulación de pilar MP",
-    "Driver Retráctil"
-  ],
-
-  "Puntas Driver Retráctil": [
-    "Punta Driver Monopieza corta",
-    "Punta Driver Monopieza Larga"
-  ],
-
+  "Instrumental colocación": ["Torquímetro Dinamométrico","Mango Rígido (punta 4x4) para expansor óseo","Extractor de raíz residual","Mango para angulación de pilar MP","Driver Retráctil"],
+  "Puntas Driver Retráctil": ["Punta Driver Monopieza corta","Punta Driver Monopieza Larga"],
   "Destornilladores": {
-    "Cuadrado": [
-      "Destornillador cuadrado 0.050\" Standar",
-      "Destornillador cuadrado 0.050\" Corto",
-      "Destornillador cuadrado 0.050\" Largo",
-      "Destornillador cuadrado 0.050\" Extra Largo"
-    ],
-    "Hexagonal": [
-      "Destornillador Hexagonal 0.048\" Standar",
-      "Destornillador Hexagonal 0.048\" Corto",
-      "Destornillador Hexagonal 0.048\" Largo",
-      "Destornillador Hexagonal 0.048\" Extra Largo"
-    ]
+    "Cuadrado": ["Destornillador cuadrado 0.050\" Standar","Destornillador cuadrado 0.050\" Corto","Destornillador cuadrado 0.050\" Largo","Destornillador cuadrado 0.050\" Extra Largo"],
+    "Hexagonal": ["Destornillador Hexagonal 0.048\" Standar","Destornillador Hexagonal 0.048\" Corto","Destornillador Hexagonal 0.048\" Largo","Destornillador Hexagonal 0.048\" Extra Largo"]
   },
-
   "Complementos de fresado": {
-    "Prolongador 4x4": [
-      "Prolongador 4x4 corto Ø6",
-      "Prolongador 4x4 Largo Ø6"
-    ],
-    "Prolongador de fresa": [
-      "Prolongador de fresa"
-    ],
-    "Punch": [
-      "Punch 0.050\" corto",
-      "Punch 0.050\" Standar",
-      "Punch 0.050\" largo"
-    ],
-    "Llave conectora MP para contra ángulo": [
-      "Llave conectora MP para contra angulo Larga",
-      "Llave conectora MP para contra angulo Corta"
-    ]
+    "Prolongador 4x4": ["Prolongador 4x4 corto Ø6","Prolongador 4x4 Largo Ø6"],
+    "Prolongador de fresa": ["Prolongador de fresa"],
+    "Punch": ["Punch 0.050\" corto","Punch 0.050\" Standar","Punch 0.050\" largo"],
+    "Llave conectora MP para contra ángulo": ["Llave conectora MP para contra angulo Larga","Llave conectora MP para contra angulo Corta"]
   },
-
   "Llaves conectoras": {
-    "Monopieza": [
-      "Llave conectora Monopieza para Torquímetro Corta",
-      "Llave conectora Monopieza para Torquímetro Larga"
-    ],
-    "CMU": [
-      "Llave CMU para Torquímetro corta",
-      "Llave CMU para Torquímetro Larga"
-    ]
+    "Monopieza": ["Llave conectora Monopieza para Torquímetro Corta","Llave conectora Monopieza para Torquímetro Larga"],
+    "CMU": ["Llave CMU para Torquímetro corta","Llave CMU para Torquímetro Larga"]
   },
-
-  "Llave Digital para Minipilar": [
-    "Llave Digital para Minipilar"
-  ],
-
+  "Llave Digital para Minipilar": ["Llave Digital para Minipilar"],
   "Anillas para guía quirúrgica": {
-    "Sistema Monopieza": [
-      "Anilla Para guía Quirúrgica Ø5,5-Ø2,1",
-      "Anilla para guía Quirúrgica Ø4,1-Ø3,0"
-    ],
-    "Sistema Bifásico": [
-      "Anilla Para guía Quirúrgica Ø5,5-Ø4,2"
-    ]
+    "Sistema Monopieza": ["Anilla Para guía Quirúrgica Ø5,5-Ø2,1","Anilla para guía Quirúrgica Ø4,1-Ø3,0"],
+    "Sistema Bifásico": ["Anilla Para guía Quirúrgica Ø5,5-Ø4,2"]
   },
-
-  "Protocolo Guiado Bio-Fix": [
-    "Anilla Para Pin",
-    "Fresa lanza Ø1,3",
-    "Pin de Fijación"
-  ]
+  "Protocolo Guiado Bio-Fix": ["Anilla Para Pin","Fresa lanza Ø1,3","Pin de Fijación"]
 }
 };
-        // ========== ESTADO ==========
+
+// ========== ESTADO ==========
 let cart = {};
 let stack = ["step-choice"];
 let clientData = {};
 let catalogStack = [];
 
-// URL del Apps Script que guarda los clientes nuevos en la planilla
-const APPS_SCRIPT_PEDIDOS_URL = "https://script.google.com/macros/s/AKfycbwKM-YNvsKT43V662BPT_UB0PoC8JpfPL5oPCWcD7VKzwXO-2Rr9ysx4h4isGaCcsJk/exec";
+// ===== URL ÚNICA DEL APPS SCRIPT (usada para clientes y pedidos) =====
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwKM-YNvsKT43V662BPT_UB0PoC8JpfPL5oPCWcD7VKzwXO-2Rr9ysx4h4isGaCcsJk/exec";
 
-// Envío por JSONP (igual técnica que el sistema de stock)
-function jsonpClientes(params, cb) {
-  const cbName = 'cli_' + Date.now() + '_' + Math.floor(Math.random() * 1000);
+// ========== JSONP GENÉRICO ==========
+function jsonpCall(params, cb) {
+  const cbName = 'cb_' + Date.now() + '_' + Math.floor(Math.random() * 1000);
   const s = document.createElement('script');
-  window[cbName] = function (d) { delete window[cbName]; document.body.removeChild(s); if (cb) cb(d); };
+  window[cbName] = function(d) { delete window[cbName]; document.body.removeChild(s); if (cb) cb(d); };
   let qs = '?callback=' + cbName;
   Object.keys(params).forEach(k => qs += '&' + k + '=' + encodeURIComponent(params[k]));
-  s.src = URL_CLIENTES + qs;
+  s.src = APPS_SCRIPT_URL + qs;
   document.body.appendChild(s);
 }
 
@@ -777,10 +467,8 @@ function separarNombre(completo) {
 function showSection(id, push = true) {
   document.querySelectorAll("section").forEach(s => s.classList.add("hidden"));
   document.getElementById(id).classList.remove("hidden");
-
   if (push) stack.push(id);
   document.getElementById("btn-volver").classList.toggle("hidden", stack.length <= 1);
-
   updateLabels(id);
   if (push) window.scrollTo(0, 0);
 }
@@ -802,7 +490,6 @@ function updateLabels(id) {
 }
 
 function goBack() {
-  // volver normal por pantallas
   if (stack.length <= 1) return;
   stack.pop();
   const prev = stack[stack.length - 1];
@@ -824,13 +511,12 @@ function validateStart(type) {
     clientData.prov = document.getElementById("new_prov").value;
     clientData.cp = document.getElementById("new_cp").value;
 
-    // Separamos nombre y apellido automáticamente
     const np = separarNombre(n);
     clientData.nombreSolo = np.nombre;
     clientData.apellidoSolo = np.apellido;
 
-    // Guardamos el cliente nuevo en la planilla (en segundo plano)
-    jsonpClientes({
+    // Guardar cliente nuevo en la planilla (en segundo plano)
+    jsonpCall({
       accion: 'registrarCliente',
       nombre: np.nombre,
       apellido: np.apellido,
@@ -839,7 +525,7 @@ function validateStart(type) {
       localidad: clientData.loc,
       cp: clientData.cp,
       provincia: clientData.prov
-    }, function (resp) {
+    }, function(resp) {
       if (!resp || !resp.ok) {
         console.error('No se pudo guardar el cliente:', resp ? resp.error : 'sin respuesta');
       }
@@ -858,25 +544,15 @@ function renderItem(prod) {
   const q = cart[prod] || 0;
   const safeProd = JSON.stringify(prod);
   const inputId = uid("qty");
-
   return `
     <div class="flex justify-between items-center p-5 px-8 bg-white mb-3 rounded-[25px] border border-slate-50 card-shadow">
       <span class="text-[10px] font-black text-slate-600 uppercase">${prod}</span>
-
       <div class="flex items-center gap-2 bg-slate-50 p-1 rounded-2xl border border-slate-100">
         <button type="button" onclick='update(${safeProd},-1,this)'
           class="w-10 h-10 flex items-center justify-center bg-white rounded-xl font-bold text-slate-400">-</button>
-
-        <input
-          id="${inputId}"
-          type="number"
-          inputmode="numeric"
-          min="0"
-          value="${q}"
+        <input id="${inputId}" type="number" inputmode="numeric" min="0" value="${q}"
           onchange='setQty(${safeProd}, this.value)'
-          class="w-16 h-10 text-center font-black text-xs text-slate-700 bg-white rounded-xl border border-slate-100 outline-none"
-        />
-
+          class="w-16 h-10 text-center font-black text-xs text-slate-700 bg-white rounded-xl border border-slate-100 outline-none" />
         <button type="button" onclick='update(${safeProd},1,this)'
           class="w-10 h-10 flex items-center justify-center bg-slate-900 text-white rounded-xl shadow-md font-bold">+</button>
       </div>
@@ -886,51 +562,33 @@ function renderItem(prod) {
 
 function update(item, delta, btn) {
   const newQty = (cart[item] || 0) + delta;
-
-  if (newQty <= 0) {
-    delete cart[item];
-  } else {
-    cart[item] = newQty;
-  }
-
-  // actualizar el input del medio
+  if (newQty <= 0) { delete cart[item]; } else { cart[item] = newQty; }
   const qtyInput = btn.parentElement.querySelector("input[type='number']");
   if (qtyInput) qtyInput.value = cart[item] || 0;
-
   updateNavCount();
 }
+
 function updateNavCount() {
   const el = document.getElementById("cart-count");
-  if (!el) return; // por si lo borran sin querer
+  if (!el) return;
   el.innerText = Object.values(cart).reduce((a, b) => a + b, 0);
 }
+
 function setQty(item, value) {
   let n = parseInt(value, 10);
-
   if (isNaN(n) || n < 0) n = 0;
-
-  if (n === 0) {
-    delete cart[item];
-  } else {
-    cart[item] = n;
-  }
-
+  if (n === 0) { delete cart[item]; } else { cart[item] = n; }
   updateNavCount();
 }
 
-// ========== CATÁLOGO (ACORDEÓN RECUSIVO) ==========
+// ========== CATÁLOGO ==========
 function uid(prefix = "x") {
   return `${prefix}_${Math.random().toString(16).slice(2)}_${Date.now()}`;
 }
 
 function renderNode(val) {
-  // producto final
   if (typeof val === "string") return renderItem(val);
-
-  // lista de productos
   if (Array.isArray(val)) return val.map(p => renderItem(p)).join("");
-
-  // objeto: render como "subtítulos" + contenido (sin navegar a otra pantalla)
   if (val && typeof val === "object") {
     return Object.keys(val).map(subKey => {
       const innerId = uid("inner");
@@ -942,57 +600,38 @@ function renderNode(val) {
             <span>${subKey}</span>
             <span class="text-blue-500 font-black" data-chevron>▾</span>
           </button>
-
-          <div id="${innerId}" class="hidden mt-3">
-            ${renderNode(val[subKey])}
-          </div>
+          <div id="${innerId}" class="hidden mt-3">${renderNode(val[subKey])}</div>
         </div>
       `;
     }).join("");
   }
-
   return "";
 }
 
 function togglePanel(panelId, btnEl) {
   const panel = document.getElementById(panelId);
   if (!panel) return;
-
   const chev = btnEl.querySelector("[data-chevron]");
   const isOpen = !panel.classList.contains("hidden");
-
-  if (isOpen) {
-    panel.classList.add("hidden");
-    if (chev) chev.textContent = "▾";
-  } else {
-    panel.classList.remove("hidden");
-    if (chev) chev.textContent = "▴";
-  }
+  if (isOpen) { panel.classList.add("hidden"); if (chev) chev.textContent = "▾"; }
+  else { panel.classList.remove("hidden"); if (chev) chev.textContent = "▴"; }
 }
 
 function loadProducts(dataOrKey) {
-  // dataOrKey puede ser "monopieza" o un objeto directo DB.analogicos.cmu
   const currentLevel = (typeof dataOrKey === "string") ? DB[dataOrKey] : dataOrKey;
-
-  showSection("step-lista"); // push normal, así "atrás" vuelve al sub-menú
+  showSection("step-lista");
   const container = document.getElementById("step-lista");
   container.innerHTML = "";
-
   if (!currentLevel) {
     container.innerHTML = "<p class='text-center p-10 text-slate-400'>Sin datos</p>";
     return;
   }
-
-  // Si es string o array, render directo.
   if (typeof currentLevel === "string" || Array.isArray(currentLevel)) {
     container.innerHTML = renderNode(currentLevel);
     return;
   }
-
-  // Si es objeto, hacemos “tarjetas desplegables” por cada key superior
   Object.keys(currentLevel).forEach(key => {
     const panelId = uid("panel");
-
     container.innerHTML += `
       <div class="bg-white rounded-[28px] border border-slate-100 card-shadow mb-4 overflow-hidden">
         <button type="button"
@@ -1001,10 +640,7 @@ function loadProducts(dataOrKey) {
           <span>${key}</span>
           <span class="text-blue-500 font-black" data-chevron>▾</span>
         </button>
-
-        <div id="${panelId}" class="hidden px-4 pb-4">
-          ${renderNode(currentLevel[key])}
-        </div>
+        <div id="${panelId}" class="hidden px-4 pb-4">${renderNode(currentLevel[key])}</div>
       </div>
     `;
   });
@@ -1013,7 +649,6 @@ function loadProducts(dataOrKey) {
 // ========== RESUMEN Y WHATSAPP ==========
 function goToResumen() {
   showSection("step-resumen");
-
   const container = document.getElementById("cart-items");
   container.innerHTML = `
     <div class="bg-blue-50 p-6 rounded-[32px] border border-blue-100 mb-6">
@@ -1021,7 +656,6 @@ function goToResumen() {
       <p class="text-[10px] text-slate-500 font-bold">${clientData.tipo === "NUEVO" ? "CUIL" : "DNI"}: ${clientData.id || ""}</p>
     </div>
   `;
-
   Object.entries(cart).forEach(([n, q]) => {
     const safeName = JSON.stringify(n);
     container.innerHTML += `
@@ -1038,23 +672,17 @@ function goToResumen() {
   });
 }
 
-// ===== URL DEL APPS SCRIPT DE PEDIDOS =====
-// Reemplazá este valor con la URL de tu Web App desplegada en Google Apps Script
-const APPS_SCRIPT_PEDIDOS_URL = "https://script.google.com/macros/s/AKfycbwKM-YNvsKT43V662BPT_UB0PoC8JpfPL5oPCWcD7VKzwXO-2Rr9ysx4h4isGaCcsJk/exec";
-
 function buildWAMessage(pedidoTexto, obs) {
   let msg = `*PEDIDO BIO-FIX®*\n\n`;
   msg += `*DATOS DEL PROFESIONAL*\n`;
   msg += `Nombre: ${clientData.nombre || ""}\n`;
   msg += `${clientData.tipo === "NUEVO" ? "CUIL" : "DNI"}: ${clientData.id || ""}\n`;
-
   if (clientData.tipo === "NUEVO") {
     msg += `Matrícula: ${clientData.matricula || ""}\n`;
     msg += `Localidad: ${clientData.loc || ""}\n`;
     msg += `Provincia: ${clientData.prov || ""}\n`;
     msg += `CP: ${clientData.cp || ""}\n`;
   }
-
   msg += `\n*PRODUCTOS SOLICITADOS*\n${pedidoTexto}\n`;
   if (obs) msg += `\n*OBSERVACIONES*\n${obs}\n`;
   msg += `\n—\nPedido sujeto a confirmación de stock.`;
@@ -1084,13 +712,11 @@ function sendWA() {
 
   const obs = document.getElementById("obs")?.value || "";
 
-  // Guardamos el mensaje para enviarlo desde el callback
   window._pendingWAMessage = buildWAMessage(pedidoTexto, obs);
 
-  // Separamos nombre y apellido del cliente para la planilla
   const np = separarNombre(clientData.nombre || "");
 
-  // Llamada al Apps Script vía JSONP
+  // JSONP directo con nombre de callback fijo (no dinámico, para que el script lo encuentre)
   const cbName = "handleSheetResponse";
   const params = new URLSearchParams({
     callback:      cbName,
@@ -1107,7 +733,7 @@ function sendWA() {
   });
 
   const script = document.createElement("script");
-  script.src = `${APPS_SCRIPT_PEDIDOS_URL}?${params.toString()}`;
+  script.src = `${APPS_SCRIPT_URL}?${params.toString()}`;
   script.onerror = function() {
     alert("No se pudo conectar con la planilla. Revisá la URL del script.");
   };
