@@ -261,7 +261,7 @@ let stack = ["step-choice"];
 let clientData = {};
 
 // ===== URL DEL APPS SCRIPT =====
-const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwKM-YNvsKT43V662BPT_UB0PoC8JpfPL5oPCWcD7VKzwXO-2Rr9ysx4h4isGaCcsJk/exec";
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzPIIA1nyWbaOXX4lVnjy5FYutzP3GfMXLQEQi2QIgR0i79UNp3mxyAWcL7exJBmCu3vw/exec";
 
 // ========== JSONP GENÉRICO ==========
 function jsonpCall(params, cb) {
@@ -422,7 +422,7 @@ function sendWA() {
         tipo: clientData.tipo || "NUEVO",
         nombre: clientData.nombreSolo || "",
         apellido: clientData.apellidoSolo || "",
-        cuil_dni: clientData.id || "",
+        cuil: clientData.id || "",
         matricula: clientData.matricula || "-",
         localidad: clientData.loc || "-",
         cp: clientData.cp || "-",
